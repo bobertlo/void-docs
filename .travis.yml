@@ -1,8 +1,16 @@
 ---
 language: bash
 
-script:
-  - ci/format.sh
+addons:
+  apt:
+    packages:
+      - aspell
+      - aspell-en
+
+jobs:
+  include:
+    - script: ci/format.sh
+    - script: ci/spellcheck.sh
 
 notifications:
   email: false
